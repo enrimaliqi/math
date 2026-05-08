@@ -6,11 +6,12 @@ import {defineConfig, loadEnv} from 'vite';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   return {
-    // Needed for GitHub Pages when deploying to a project sub-path:
-    // https://<username>.github.io/<repoName>/
-    base: '/math/',
-
-
+    // Correct base path handling:
+    // - Default (Vercel / normal deploy): '/'
+    // - Override if you host under a sub-path (GitHub Pages etc.)
+    //   Set VITE_BASE or BASE in your environment.
+    base: env.VITE_BASE ?? env.BASE ?? '/',
+    
     plugins: [react(), tailwindcss()],
 
     define: {
