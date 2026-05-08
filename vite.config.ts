@@ -8,7 +8,8 @@ export default defineConfig(({ mode }) => {
   return {
     // Needed for GitHub Pages when deploying to a project sub-path:
     // https://<username>.github.io/<repoName>/
-    base: '/algebra/',
+    base: '/math/',
+
 
     plugins: [react(), tailwindcss()],
 
